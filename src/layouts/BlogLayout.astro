@@ -1,0 +1,41 @@
+---
+import Layout from "./Layout.astro";
+import BaseHead from "@components/BaseHead.astro";
+
+export interface Props {
+  content: {
+    title: string;
+    description: string;
+    author: string;
+    heroImage?: string;
+    pubDate?: string;
+  };
+}
+
+const {
+  content: { title, description, author, pubDate, heroImage },
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <Layout>
+    <h1>{title}</h1>
+    <p>Written by {author}</p>
+    {
+      pubDate && (
+        <time datetime={pubDate}>
+          {new Date(pubDate).toLocaleDateString("en-us", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })}
+        </time>
+      )
+    }
+    <slot />
+  </Layout>
+</html>
