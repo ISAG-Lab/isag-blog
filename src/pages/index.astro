@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import BaseHead from "@components/BaseHead.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import Card from "@components/Card.astro";
 
 const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
   (a, b) =>
@@ -17,25 +18,21 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
   </head>
 
   <Layout>
-    <div>
+    <div class="flex justify-center p-5">
       <ul>
-
         {
           posts.map((post) => (
-            <li>
-              {post.frontmatter.heroImage && <img width={720} height={360} src={post.frontmatter.heroImage} alt="" />}
-              <time datetime={post.frontmatter.pubDate}>
-									{new Date(post.frontmatter.pubDate).toLocaleDateString('en-us', {
-										year: 'numeric',
-										month: 'short',
-										day: 'numeric',
-									})}
-								</time>
-              <a href={post.url}>{post.frontmatter.title}</a>
-              </li>
-              ))
-            }
-            </ul>
+            <Card
+              title={post.frontmatter.title}
+              description={post.frontmatter.description}
+              heroImage={post.frontmatter.heroImage}
+              pubDate={post.frontmatter.pubDate}
+              tag={post.frontmatter.tag}
+              url={post.url}
+            />
+          ))
+        }
+      </ul>
     </div>
   </Layout>
 </html>

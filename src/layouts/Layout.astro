@@ -1,10 +1,16 @@
 ---
 import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
+import RightBar from "@components/RightBar.astro";
 ---
 
-<body>
-  <Header />
-  <slot />
-  <Footer />
+<body class="bg-yellow-100 flex">
+  <div class="basis-1/4">
+    <Header />
+  </div>
+  <div class="bg-red-100 basis-1/2 flex-1 min-h-screen">
+    <slot />
+  </div>
+  <div class="bg-blue-100 basis-1/4 min-h-screen">
+    <RightBar />
+  </div>
 </body>

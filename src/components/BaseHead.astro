@@ -1,10 +1,11 @@
 ---
+import "@styles/global.scss"
 export interface Props {
   title: string;
   description: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description }: Props = Astro.props;
 ---
 
 <!-- Global Metadata -->
