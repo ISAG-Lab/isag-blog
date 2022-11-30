@@ -1,0 +1,18 @@
+{
+  "name": "isag-blog",
+  "version": "1.0.0",
+  "description": "Isag's Blog Website",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "astro": "^1.6.11"
+  }
+}
