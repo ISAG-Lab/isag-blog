@@ -23,19 +23,22 @@ const {
     <BaseHead title={title} description={description} />
   </head>
   <Layout>
-    <h1>{title}</h1>
-    <p>Written by {author}</p>
-    {
-      pubDate && (
-        <time datetime={pubDate}>
-          {new Date(pubDate).toLocaleDateString("en-us", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })}
-        </time>
-      )
-    }
+    <article>
+      {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
+      <h1>{title}</h1>
+      <p>Written by {author}</p>
+      {
+        pubDate && (
+          <time datetime={pubDate}>
+            {new Date(pubDate).toLocaleDateString("en-us", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
+          </time>
+        )
+      }
+    </article>
     <slot />
   </Layout>
 </html>
