@@ -1,5 +1,18 @@
-<header class="bg-red-100">
-  <h1>ISAG BLOG</h1>
-  <a href="/">Home</a>
-  <a href="/about">About</a>
+---
+import { Icon } from "astro-icon";
+---
+
+<header
+  class="bg-green-200 min-h-screen fixed p-3 flex flex-col justify-between"
+>
+  <div class="w-7">
+    <img src="logo.png" class="w-full" alt="" />
+  </div>
+  <div>
+    <a href="/"><Icon name="ic:round-home" /></a>
+    <a href="/about"><Icon name="fluent:people-community-16-filled" /></a>
+  </div>
+  <div>
+    <Icon name="ri:sun-fill" />
+  </div>
 </header>
