@@ -7,6 +7,7 @@ export interface Props {
   heroImage: string;
   url: string;
 }
+
 const { title, description, pubDate, tag, heroImage, url } = Astro.props;
 ---
 
@@ -14,7 +15,7 @@ const { title, description, pubDate, tag, heroImage, url } = Astro.props;
   <a href={url} rel="prefetch">
     <div>
       <div>
-        <h>{title}</h>
+        <h1>{title}</h1>
         <p>{description}</p>
       </div>
       <div>
