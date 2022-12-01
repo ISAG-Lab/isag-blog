@@ -3,14 +3,14 @@ import Header from "@components/Header.astro";
 import RightBar from "@components/RightBar.astro";
 ---
 
-<body class="bg-yellow-100 flex">
-  <div class="basis-1/4">
+<body>
+  <div>
     <Header />
   </div>
-  <div class="bg-red-100 basis-1/2 flex-1 min-h-screen">
+  <div>
     <slot />
   </div>
-  <div class="bg-blue-100 basis-1/4 min-h-screen">
+  <div>
     <RightBar />
   </div>
 </body>

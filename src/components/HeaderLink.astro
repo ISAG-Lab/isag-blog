@@ -6,7 +6,7 @@ const { pathname } = Astro.url;
 const isActive = href === pathname || href === pathname.replace(/\/$/, "");
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
+<a href={href} rel="prefetch" class:list={[className, { active: isActive }]} {...props}>
   <slot />
 </a>
 
@@ -15,6 +15,6 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
     @apply text-black;
   }
   a {
-    @apply text-white;
+    @apply text-red-600;
   }
 </style>

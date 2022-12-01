@@ -15,20 +15,20 @@ const navLinks = [
 ];
 ---
 
-<header
-  class="bg-green-200 min-h-screen fixed p-3 flex flex-col justify-between text-center"
->
-  <div class="w-7 mx-auto">
-    <img src="/public/logo.png" class="w-full" alt="" />
+<header>
+  <div class="w-7">
+    <a href="/" rel="prefetch"
+      ><img src="/static/logo.png" class="w-full" alt="" />
+    </a>
   </div>
   <div>
     {
       navLinks.map((link) => (
-        <HeaderLink class="nav-icon" href={link.href}>
+        <HeaderLink href={link.href}>
           <i class={link.icon} />
         </HeaderLink>
       ))
     }
   </div>
-  <div class="nav-icon"><i class="fa-solid fa-sun"></i></div>
+  <div><i class="fa-solid fa-sun"></i></div>
 </header>
