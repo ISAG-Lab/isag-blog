@@ -1,5 +1,18 @@
 ---
+import HeaderLink from "./HeaderLink.astro";
 
+const navLinks = [
+  {
+    name: "Home",
+    href: "/",
+    icon: "fa-solid fa-house-chimney",
+  },
+  {
+    name: "About",
+    href: "/about",
+    icon: "fa-solid fa-users",
+  },
+];
 ---
 
 <header
@@ -9,8 +22,13 @@
     <img src="logo.png" class="w-full" alt="" />
   </div>
   <div>
-    <a href="/" class="nav-icon"><i class="fa-solid fa-house-chimney"></i></a>
-    <a href="/about" class="nav-icon"><i class="fa-solid fa-users"></i></a>
+    {
+      navLinks.map((link) => (
+        <HeaderLink class="nav-icon" href={link.href}>
+          <i class={link.icon} />
+        </HeaderLink>
+      ))
+    }
   </div>
   <div class="nav-icon"><i class="fa-solid fa-sun"></i></div>
 </header>

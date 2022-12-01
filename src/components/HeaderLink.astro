@@ -9,3 +9,12 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
 <a href={href} class:list={[className, { active: isActive }]} {...props}>
   <slot />
 </a>
+
+<style>
+  a.active {
+    @apply text-black;
+  }
+  a {
+    @apply text-white;
+  }
+</style>
