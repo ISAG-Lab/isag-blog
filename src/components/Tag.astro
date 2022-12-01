@@ -1,0 +1,9 @@
+---
+const tags = (await Astro.glob("../pages/blog/*.{md,mdx}")).map(
+  (tag) => tag.frontmatter.tag
+);
+---
+
+<div>
+  {tags.map(tag=> <p>{tag}</p>)}
+</div>

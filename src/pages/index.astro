@@ -3,6 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import BaseHead from "@components/BaseHead.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import Card from "@components/Card.astro";
+import Tag from "@components/Tag.astro";
 
 const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
   (a, b) =>
@@ -18,7 +19,8 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
   </head>
 
   <Layout>
-    <div class="flex justify-center p-5">
+    <div>
+      <Tag />
       <ul>
         {
           posts.map((post) => (
