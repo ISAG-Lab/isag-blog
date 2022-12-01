@@ -1,5 +1,34 @@
-<header class="bg-red-100">
-  <h1>ISAG BLOG</h1>
-  <a href="/">Home</a>
-  <a href="/about">About</a>
+---
+import HeaderLink from "./HeaderLink.astro";
+
+const navLinks = [
+  {
+    name: "Home",
+    href: "/",
+    icon: "fa-solid fa-house-chimney",
+  },
+  {
+    name: "About",
+    href: "/about",
+    icon: "fa-solid fa-users",
+  },
+];
+---
+
+<header
+  class="bg-green-200 min-h-screen fixed p-3 flex flex-col justify-between text-center"
+>
+  <div class="w-7 mx-auto">
+    <img src="logo.png" class="w-full" alt="" />
+  </div>
+  <div>
+    {
+      navLinks.map((link) => (
+        <HeaderLink class="nav-icon" href={link.href}>
+          <i class={link.icon} />
+        </HeaderLink>
+      ))
+    }
+  </div>
+  <div class="nav-icon"><i class="fa-solid fa-sun"></i></div>
 </header>
