@@ -15,8 +15,8 @@ const navLinks = [
 ];
 ---
 
-<header>
-  <div class="w-7">
+<header class="bg-green-200 min-h-screen fixed flex flex-col justify-between p-3 text-center">
+  <div class="w-7 mx-auto">
     <a href="/" rel="prefetch"
       ><img src="/static/logo.png" class="w-full" alt="" />
     </a>
@@ -24,11 +24,11 @@ const navLinks = [
   <div>
     {
       navLinks.map((link) => (
-        <HeaderLink href={link.href}>
+        <HeaderLink class="nav-icon" href={link.href}>
           <i class={link.icon} />
         </HeaderLink>
       ))
     }
   </div>
-  <div><i class="fa-solid fa-sun"></i></div>
+  <div class="nav-icon"><i class="fa-solid fa-sun"></i></div>
 </header>
