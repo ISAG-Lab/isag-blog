@@ -5,18 +5,20 @@ const navLinks = [
   {
     name: "Home",
     href: "/",
-    icon: "fa-solid fa-house-chimney",
+    path: "/static/icon/icon-house.svg",
   },
   {
     name: "About",
     href: "/about",
-    icon: "fa-solid fa-users",
+    path: "/static/icon/icon-users.svg",
   },
 ];
 ---
 
-<header>
-  <div class="w-7">
+<header
+  class="bg-green-200 min-h-screen fixed flex flex-col justify-between p-3 text-center"
+>
+  <div class="w-7 mx-auto">
     <a href="/" rel="prefetch"
       ><img src="/static/logo.png" class="w-full" alt="" />
     </a>
@@ -25,10 +27,10 @@ const navLinks = [
     {
       navLinks.map((link) => (
         <HeaderLink href={link.href}>
-          <i class={link.icon} />
+          <img src={link.path} alt="" />
         </HeaderLink>
       ))
     }
   </div>
-  <div><i class="fa-solid fa-sun"></i></div>
+  <div class="nav-icon"><img src="/static/icon/icon-sun.svg" alt="" /></div>
 </header>

@@ -5,6 +5,3 @@
   scroll-behavior: smooth;
 }
 
-.nav-icon {
-  @apply block text-2xl mt-4; 
-}
