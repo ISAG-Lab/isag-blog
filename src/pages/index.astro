@@ -27,7 +27,7 @@ const tags = [
 
   <Layout>
     <div>
-      <Tag tags={tags} />
+      <Tag tags={tags} client:only="svelte" />
       <ul>
         {
           posts.map((post) => (

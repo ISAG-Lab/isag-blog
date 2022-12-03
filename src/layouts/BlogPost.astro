@@ -9,11 +9,12 @@ export interface Props {
     author: string;
     heroImage?: string;
     pubDate?: string;
+    tag: string;
   };
 }
 
 const {
-  content: { title, description, author, pubDate, heroImage },
+  content: { title, description, author, pubDate, heroImage, tag },
 } = Astro.props;
 ---
 
@@ -24,20 +25,25 @@ const {
   </head>
   <Layout>
     <article class="text-white">
+      <div class="text-sm">
+        <span>
+          {
+            pubDate && (
+              <time datetime={pubDate}>
+                {new Date(pubDate).toLocaleDateString("en-us", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </time>
+            )
+          }
+        </span>
+        <span>{tag}</span>
+      </div>
+      <h1 class="text-4xl">{title}</h1>
       {heroImage && <img class="w-full" src={heroImage} alt="" />}
-      <h1>{title}</h1>
-      <p>Written by {author}</p>
-      {
-        pubDate && (
-          <time datetime={pubDate}>
-            {new Date(pubDate).toLocaleDateString("en-us", {
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })}
-          </time>
-        )
-      }
+      <p>Written by {author === undefined ? <span>ISAG Lab</span> : <span>{author}</span>}</p>
     </article>
     <div class="text-white">
       <slot />
