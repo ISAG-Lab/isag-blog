@@ -3,13 +3,20 @@ import Layout from "@layouts/Layout.astro";
 import BaseHead from "@components/BaseHead.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import Card from "@components/Card.astro";
-import Tag from "@components/Tag.astro";
+import Tag from "@components/Tag.svelte";
 
 const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
   (a, b) =>
     new Date(b.frontmatter.pubDate).valueOf() -
     new Date(a.frontmatter.pubDate).valueOf()
 );
+
+const tags = [
+  "For you",
+  ...new Set(
+    (await Astro.glob("./blog/*.{md,mdx}")).map((tag) => tag.frontmatter.tag)
+  ),
+];
 ---
 
 <!DOCTYPE html>
@@ -20,7 +27,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
 
   <Layout>
     <div>
-      <Tag />
+      <Tag tags={tags} client:only="svelte" />
       <ul>
         {
           posts.map((post) => (

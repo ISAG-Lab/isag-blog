@@ -11,17 +11,17 @@ export interface Props {
 const { title, description, pubDate, tag, heroImage, url } = Astro.props;
 ---
 
-<div class="bg-white rounded-2xl shadow-xl mb-5 p-5">
+<div class="bg-[#615E5E] rounded-2xl shadow-md shadow-[#615E5E] mb-6 p-5">
   <a href={url} rel="prefetch" class="flex justify-between">
     <div class="flex flex-col justify-between">
       <div>
-        <h1 class="text-2xl">{title}</h1>
-        <p>{description}</p>
+        <h1 class="text-2xl text-white">{title}</h1>
+        <p class="text-[#f2f2f2]">{description}</p>
       </div>
       <div>
-        <span class="text-sm py-[1px] px-4 rounded-xl bg-yellow-100 mr-2">{tag}</span
+        <span class="text-sm py-[1px] px-4 rounded-xl bg-[#8A8A8A] text-white mr-2">{tag}</span
         >
-        <time class="text-sm" datetime={pubDate}>
+        <time class="text-sm text-[#D8D6D6]" datetime={pubDate}>
           {
             new Date(pubDate).toLocaleDateString("en-us", {
               year: "numeric",
