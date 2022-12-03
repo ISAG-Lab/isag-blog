@@ -23,7 +23,7 @@ const {
     <BaseHead title={title} description={description} />
   </head>
   <Layout>
-    <article>
+    <article class="text-white">
       {heroImage && <img class="w-full" src={heroImage} alt="" />}
       <h1>{title}</h1>
       <p>Written by {author}</p>
@@ -39,6 +39,8 @@ const {
         )
       }
     </article>
-    <slot />
+    <div class="text-white">
+      <slot />
+    </div>
   </Layout>
 </html>

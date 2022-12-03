@@ -1,6 +1,12 @@
 ---
 import Header from "@components/Header.astro";
 import RightBar from "@components/RightBar.svelte";
+
+const tags = [
+  ...new Set(
+    (await Astro.glob("../pages/blog/*.{md,mdx}")).map((tag) => tag.frontmatter.tag)
+  ),
+];
 ---
 
 <body class="flex flex-row min-h-screen bg-[#373535]">
@@ -11,6 +17,6 @@ import RightBar from "@components/RightBar.svelte";
     <slot />
   </div>
   <div class="basis-1/4">
-    <RightBar />
+    <RightBar tags={tags} />
   </div>
 </body>
