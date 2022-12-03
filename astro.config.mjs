@@ -3,7 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 import prefetch from "@astrojs/prefetch";
-import preact from "@astrojs/preact";
+import svelte from "@astrojs/svelte";
 
 export default defineConfig({
   site: "http://localhost:3000",
@@ -16,6 +16,6 @@ export default defineConfig({
     mdx(),
     sitemap(),
     prefetch(),
-    preact(),
+    svelte(),
   ],
 });

@@ -1,16 +1,16 @@
 ---
 import Header from "@components/Header.astro";
-import RightBar from "@components/RightBar.astro";
+import RightBar from "@components/RightBar.svelte";
 ---
 
-<body class="flex flex-row min-h-screen">
-  <div class="bg-red-100 basis-1/6">
+<body class="flex flex-row min-h-screen bg-[#373535]">
+  <div class="basis-1/6">
     <Header />
   </div>
-  <div class="bg-blue-100 basis-1/2 flex-1 p-8">
+  <div class="basis-1/2 flex-1 p-8 max-w-[800px] mx-auto">
     <slot />
   </div>
-  <div class="bg-yellow-100 basis-1/4">
+  <div class="basis-1/4">
     <RightBar />
   </div>
 </body>
