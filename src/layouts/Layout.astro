@@ -1,16 +1,24 @@
 ---
 import Header from "@components/Header.astro";
-import RightBar from "@components/RightBar.astro";
+import RightBar from "@components/RightBar.svelte";
+
+const tags = [
+  ...new Set(
+    (await Astro.glob("../pages/blog/*.{md,mdx}")).map(
+      (tag) => tag.frontmatter.tag
+    )
+  ),
+];
 ---
 
-<body class="flex flex-row min-h-screen">
-  <div class="bg-red-100 basis-1/6">
+<body class="flex flex-col lg:flex-row min-h-screen bg-[#373535]">
+  <div class="lg:basis-1/6 order-last lg:order-first">
     <Header />
   </div>
-  <div class="bg-blue-100 basis-1/2 flex-1 p-8">
+  <div class="lg:basis-1/2 flex-1 p-5 lg:p-8 lg:max-w-[800px] lg:mx-auto">
     <slot />
   </div>
-  <div class="bg-yellow-100 basis-1/4">
-    <RightBar />
+  <div class="lg:basis-1/4 hidden lg:block lg:order-last">
+    <RightBar tags={tags} />
   </div>
 </body>

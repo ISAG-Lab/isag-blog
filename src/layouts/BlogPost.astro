@@ -9,11 +9,12 @@ export interface Props {
     author: string;
     heroImage?: string;
     pubDate?: string;
+    tag: string;
   };
 }
 
 const {
-  content: { title, description, author, pubDate, heroImage },
+  content: { title, description, author = "ISAG Lab", pubDate, heroImage, tag },
 } = Astro.props;
 ---
 
@@ -23,22 +24,29 @@ const {
     <BaseHead title={title} description={description} />
   </head>
   <Layout>
-    <article>
-      {heroImage && <img class="w-full" src={heroImage} alt="" />}
-      <h1>{title}</h1>
-      <p>Written by {author}</p>
-      {
-        pubDate && (
-          <time datetime={pubDate}>
-            {new Date(pubDate).toLocaleDateString("en-us", {
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })}
-          </time>
-        )
-      }
+    {heroImage && <img class="w-full" src={heroImage} alt="" />}
+    <article class="text-white my-4">
+      <h1 class="text-4xl mb-2">{title}</h1>
+      <div class="text-sm">
+        <span>Written by {author}</span>
+        <span>
+          {
+            pubDate && (
+              <time datetime={pubDate}>
+                {new Date(pubDate).toLocaleDateString("en-us", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </time>
+            )
+          }
+        </span>
+        <span>{tag}</span>
+      </div>
     </article>
-    <slot />
+    <div class="text-white">
+      <slot />
+    </div>
   </Layout>
 </html>
