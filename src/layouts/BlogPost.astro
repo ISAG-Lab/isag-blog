@@ -14,7 +14,7 @@ export interface Props {
 }
 
 const {
-  content: { title, description, author, pubDate, heroImage, tag },
+  content: { title, description, author = "ISAG Lab", pubDate, heroImage, tag },
 } = Astro.props;
 ---
 
@@ -24,8 +24,11 @@ const {
     <BaseHead title={title} description={description} />
   </head>
   <Layout>
-    <article class="text-white">
+    {heroImage && <img class="w-full" src={heroImage} alt="" />}
+    <article class="text-white my-4">
+      <h1 class="text-4xl mb-2">{title}</h1>
       <div class="text-sm">
+        <span>Written by {author}</span>
         <span>
           {
             pubDate && (
@@ -41,9 +44,6 @@ const {
         </span>
         <span>{tag}</span>
       </div>
-      <h1 class="text-4xl">{title}</h1>
-      {heroImage && <img class="w-full" src={heroImage} alt="" />}
-      <p>Written by {author === undefined ? <span>ISAG Lab</span> : <span>{author}</span>}</p>
     </article>
     <div class="text-white">
       <slot />
