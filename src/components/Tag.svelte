@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let tags;
+  export let tags: string[];
   let scrollX = 0;
   let scrollEnd = false;
   let scrollElement;
@@ -34,9 +34,12 @@
       </svg>
     </button>
   {/if}
-  <div class="overflow-hidden" bind:this={scrollElement}>
+  <div class="overflow-hidden flex" bind:this={scrollElement}>  
     {#each tags as tag}
-      <span class="whitespace-nowrap cursor-pointer mx-8 text-sm">{tag}</span>
+      <button
+        on:click={() => console.log(tag)}
+        class="whitespace-nowrap cursor-pointer mx-8 text-sm">{tag}</button
+      >
     {/each}
   </div>
   {#if !scrollEnd || scrollX === 0}
