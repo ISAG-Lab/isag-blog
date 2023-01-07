@@ -1,13 +1,29 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from "next";
 
-type Data = {
-  name: string
+type Creator = {
+  name: string;
+  github: string;
+};
+
+interface CreatorsI {
+  creators: Creator[];
 }
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<CreatorsI>
 ) {
-  res.status(200).json({ name: 'John Doe' })
+  res.status(200).json({
+    creators: [
+      {
+        name: "1tpp",
+        github: "https://github.com/1tpp",
+      },
+      {
+        name: "kitton",
+        github: "https://github.com/kittonn",
+      },
+    ],
+  });
 }

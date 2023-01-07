@@ -29,6 +29,9 @@ const getItemInPath = (filePath: string) => {
 const getBlog = (name: string) => {
   const blog = getItemInPath(join(blogDir(), name));
   blog.slug = name.replace(/\.md$/, "");
+  blog.tags = blog.tags.map((tag) => tag.replace(" ", "-"));
+  blog.tags = blog.tags.map((tag) => tag.toLowerCase());
+
   return blog;
 };
 
@@ -37,6 +40,11 @@ const getBlogBySlug = async (slug: string) => {
   const blog = getBlog(filename);
   blog.content = await markdownToHTML(blog.content);
   return blog;
+};
+
+export const getBlogsByTag = (tag: string) => {
+  const blogs = getBlogs();
+  return blogs.filter((blog) => blog.tags.includes(tag));
 };
 
 const getBlogs = (): BlogI[] => {
