@@ -8,7 +8,8 @@ export default function Tag({ tags }: { tags: TagI[] }) {
   const [scrollX, setScrollX] = useState<number>(0);
   const [scrollEnd, setScrollEnd] = useState<boolean>(false);
   const scrollElement = useRef() as React.MutableRefObject<HTMLDivElement>;
-  tags = [{ tag: "For you" }, ...tags];
+
+  tags = [{ name: "For you" }, ...tags];
 
   const searchParams = useSearchParams();
   let query = searchParams.get("feed");
@@ -23,8 +24,8 @@ export default function Tag({ tags }: { tags: TagI[] }) {
     if (
       Math.floor(
         scrollElement.current.scrollWidth -
-          scrollElement.current.scrollLeft -
-          30
+        scrollElement.current.scrollLeft -
+        30
       ) <= scrollElement.current.offsetWidth
     ) {
       setScrollEnd(true);
@@ -38,8 +39,8 @@ export default function Tag({ tags }: { tags: TagI[] }) {
     if (
       Math.floor(
         scrollElement.current.scrollWidth -
-          scrollElement.current.scrollLeft -
-          30
+        scrollElement.current.scrollLeft -
+        30
       ) <= scrollElement.current.offsetWidth
     ) {
       setScrollEnd(true);
@@ -52,7 +53,7 @@ export default function Tag({ tags }: { tags: TagI[] }) {
     if (
       scrollElement?.current &&
       scrollElement?.current.scrollWidth <=
-        scrollElement?.current.offsetWidth - 30
+      scrollElement?.current.offsetWidth - 30
     ) {
       setScrollEnd(true);
     } else {
@@ -61,9 +62,9 @@ export default function Tag({ tags }: { tags: TagI[] }) {
   }, [scrollElement.current?.scrollWidth, scrollElement.current?.offsetWidth]);
 
   return (
-    <div className="flex items-center border-b-[1px] border-[#D9D9D9] py-3">
+    <div className="flex items-center border-b-[1px] border-neutral-50 border-opacity-10 bg-[#1E1E1E] z-auto">
       {scrollX !== 0 && (
-        <button onClick={() => slide(-50)}>
+        <button onClick={() => slide(-150)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 320 512"
@@ -78,25 +79,24 @@ export default function Tag({ tags }: { tags: TagI[] }) {
         </button>
       )}
       <div
-        className="flex overflow-hidden"
+        className="flex items-center overflow-x-hidden"
         ref={scrollElement}
         onScroll={scrollCheck}
       >
         {tags.map((tag, index) => (
-          <div key={index}>
-            <Link
-              href={tag.tag === "For you" ? "/" : `/?feed=${tag.tag}`}
-              className={`mx-6 whitespace-nowrap ${
-                tag.tag === query ? "border-b-2 border-red-700" : ""
-              }`}
-            >
-              {tag.tag}
-            </Link>
-          </div>
+          <Link
+            key={index}
+            href={tag.name === "For you" ? "/" : `/?feed=${tag.name}`}
+            className={`flex items-center py-3 mx-6 h-full whitespace-nowrap capitalize ${tag.name === query ? "border-b-[1px] border-neutral-200" : ""}`}
+          >
+            {
+              tag.name.replace(/-/g, " ")
+            }
+          </Link>
         ))}
       </div>
       {(!scrollEnd || scrollX === 0) && (
-        <button onClick={() => slide(50)}>
+        <button onClick={() => slide(150)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 320 512"

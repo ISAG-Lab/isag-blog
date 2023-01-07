@@ -1,14 +1,17 @@
 import { ParamsProps } from "@interfaces/util";
-import { use } from "react";
-import { getBlogBySlug } from "@lib/blog";
 
-const getInitialBlog = async (slug: string) => {
-  const blogs = getBlogBySlug(slug);
-  return blogs;
+const getBlog = async (slug: string) => {
+  const res = await fetch(`http:/localhost:3000/api/blog/${slug}`, { cache: 'no-store' });
+  if (!res.ok) {
+    return Error("Failed to fetch the blog");
+  }
+
+  const blog = await res.json();
+  return blog;
 };
 
-export default function Page({ params }: ParamsProps) {
-  const blog = use(getInitialBlog(params.slug));
+export default async function BlogPage({ params }: ParamsProps) {
+  const blog = await getBlog(params.slug);
   return (
     <div>
       <article className="prose">
